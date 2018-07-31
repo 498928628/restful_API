@@ -9,7 +9,7 @@ app = Flask(__name__)
 stocks = []
 
 
-@app.route('/add_stock/', methods=['POST'])
+@app.route('/add_stock', methods=['POST'])
 def add_stock():
     if not request.json or 'code' not in request.json or 'name' not in request.json:
         print('request.json', request.json)
@@ -23,7 +23,7 @@ def add_stock():
     return jsonify({'result': 'success'})
 
 
-@app.route('/get_stock/', methods=['GET'])
+@app.route('/get_stock', methods=['GET'])
 def get_stock():
     print('request.args', request.args)
     if not request.args or 'code' not in request.args:
@@ -39,4 +39,4 @@ def get_stock():
 
 if __name__ == "__main__":
     # 将host设置为0.0.0.0，则外网用户也可以访问到这个服务
-    app.run(host="0.0.0.0", port=3838, debug=True)
+    app.run(host="0.0.0.0", port=3000, debug=True)
